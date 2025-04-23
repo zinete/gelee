@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=0.9" />
+    <meta charset="utf-8" />
+    <title>WebFG</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  </head>
+
+  <body style="padding-left: 10px">
+    <h1>Web Fusée 启动器</h1>
+
+    <p>Fusee Web 启动器 (由 Khaled Ahmed @KsAmJ 修改)</p>
+
+    <p>
+      Copy<a href="https://fusee-gelee.firebaseapp.com/#">此项目</a
+      >便于自己使用。如有侵权，联系
+      <a href="mailto:zhenghui@zinete.com">zhenghui@zinete.com</a>
+    </p>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          id="home-tab"
+          data-toggle="tab"
+          href="#home"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+          >启动器</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="profile-tab"
+          data-toggle="tab"
+          href="#profile"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+          >使用说明</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="contact-tab"
+          data-toggle="tab"
+          href="#contact"
+          role="tab"
+          aria-controls="contact"
+          aria-selected="false"
+          >其他信息</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
+        <table>
+          <tr>
+            <td style="vertical-align: top">
+              <h3>快速启动</h3>
+              <div style="padding: 15px">
+                <button class="btn btn-danger" id="btnSXOS">SX OS 载荷</button
+                ><br />
+                <button
+                  class="btn btn-primary"
+                  id="btnHekate"
+                  style="margin-top: 10px"
+                >
+                  hekate - CTCaer mod v4.0 载荷
+                </button>
+                <br />
+              </div>
+              <h3>其他载荷</h3>
+              <a id="btnOtherPayLoads" href="#">点击这里</a>
+              <div id="divOtherPayLoads" style="display: none">
+                <form id="mainForm">
+                  <p>
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="biskeydumpv6.bin"
+                      value="biskeydumpv6.bin"
+                    />
+                    <label for="biskeydumpv6.bin"
+                      >biskeydump v6 (biskeydumpv6.bin)</label
+                    >
+                    <br />
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="briccmiiv2.bin"
+                      value="briccmiiv2.bin"
+                    />
+                    <label for="briccmiiv2.bin"
+                      >briccmii v2 (briccmiiv2.bin)</label
+                    >
+                    <br />
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="gptrestorev1.bin"
+                      value="gptrestorev1.bin"
+                    />
+                    <label for="gptrestorev1.bin"
+                      >gptrestore v1 (gptrestorev1.bin)</label
+                    >
+                    <br />
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="memloaderv1.bin"
+                      value="memloaderv1.bin"
+                    />
+                    <label for="memloaderv1.bin"
+                      >memloader v1 (memloaderv1.bin)</label
+                    >
+                    <br />
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="romdumpv1.bin"
+                      value="romdumpv1.bin"
+                    />
+                    <label for="romdumpv1.bin"
+                      >romdump v1 (romdumpv1.bin)</label
+                    >
+                  </p>
+
+                  <p>
+                    <input
+                      type="radio"
+                      name="payload"
+                      id="uploaded"
+                      value="uploaded"
+                    />
+                    <label for="uploaded">上传你自己的载荷：</label>
+                    <input type="file" id="payloadUpload" />
+                  </p>
+                </form>
+
+                <button id="goButton" class="btn btn-primary">
+                  发送载荷！
+                </button>
+              </div>
+            </td>
+            <td style="text-align: left; vertical-align: top">
+              <h3>结果：</h3>
+              <textarea cols="80" rows="12" id="output"></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="profile"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+      >
+        <ol>
+          <li>将 Switch 置于 RCM 模式，并将其连接到你的设备。</li>
+          <li>选择示例载荷或上传一个。</li>
+          <li>点击"发送载荷！"</li>
+          <li>在出现的确认界面上，选择"APX"并点击确认。</li>
+          <li>如果一切顺利，载荷将会启动！</li>
+        </ol>
+
+        <br /><br />
+        修改自
+        <a href="https://github.com/atlas44/web-fusee-launcher">WebFG</a>，
+        该项目移植自
+        <a href="https://github.com/reswitched/fusee-launcher">fusee-launcher</a
+        >。感谢 atlas44 提供的 java 移植版本，感谢 rajkosto 提供的众多载荷，
+        感谢 ktemkin 和 ReSwitched 开发的 Fusée Gelée 以及其他众多贡献！
+      </div>
+      <div
+        class="tab-pane fade"
+        id="contact"
+        role="tabpanel"
+        aria-labelledby="contact-tab"
+      >
+        <ul>
+          <li>
+            这个程序测试不太充分。我只是写写看。如果出现任何问题，我不负责！
+          </li>
+          <li>
+            由于 Chrome 的 WebUSB 实现限制（可能还有其他原因），此程序在 Windows
+            上无法运行！
+          </li>
+          <li>由于其他浏览器不支持 WebUSB，此程序目前仅支持 Chrome 浏览器。</li>
+          <li>
+            在 Linux
+            系统上，你可能会遇到访问权限被拒绝的错误！如果发生这种情况，
+            你可以尝试在此路径创建文件：
+            <code>/etc/udev/rules.d/50-switch.rules</code>
+            <div>文件内容如下：</div>
+            <div>
+              <code
+                >SUBSYSTEM=="usb", ATTR{idVendor}=="0955", MODE="0664",
+                GROUP="plugdev"</code
+              >
+            </div>
+          </li>
+          <li>
+            此程序已在 Linux、OSX、Android（未 root）和 Chromebook
+            上测试通过。具体效果可能因设备而异。
+          </li>
+
+          <li style="margin-top: 50px">联系我：@ksamj</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="./src/js/lib/jquery.min.js"></script>
+    <script src="./src/js/lib/bootstrap.min.js"></script>
+    <script src="./src/js/js-payloads/hekate_ctcaer_40.bin.js"></script>
+    <script src="./src/js/js-payloads/team_xecuter.bin.js"></script>
+    <script src="./src/js/js-payloads/biskeydumpv6.bin.js"></script>
+    <script src="./src/js/js-payloads/briccmiiv2.bin.js"></script>
+    <script src="./src/js/js-payloads/gptrestorev1.bin.js"></script>
+    <script src="./src/js/js-payloads/memloaderv1.bin.js"></script>
+    <script src="./src/js/js-payloads/romdumpv1.bin.js"></script>
+    <script src="./src/js/js-payloads/main.js"></script>
+  </body>
+</html>
